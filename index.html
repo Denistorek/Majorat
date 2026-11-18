@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Majoratul meu – 23 ianuarie 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060c1f;--bg2:#12224a;--gold:#dcb460;--gold-l:#f4e3b0;--gold-d:#b99449;--ink:#ecd9a6;--line:rgba(220,180,96,.35);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#060c1f;--bg2:#12224a}}
+:root[data-theme="dark"]{--bg:#060c1f;--bg2:#12224a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{margin:0;padding:0;box-sizing:inherit}
+body{background:var(--bg);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;min-height:100vh;overflow-x:hidden}
+.sky{position:fixed;inset:0;background:radial-gradient(ellipse 90% 50% at 50% 12%,var(--bg2),transparent 70%),radial-gradient(ellipse 120% 80% at 50% 60%,#0b1634,var(--bg) 70%);z-index:0}
+.sky i{position:absolute;border-radius:50%;filter:blur(14px);animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(18px,-26px)}}
+.bal{position:fixed;bottom:-220px;z-index:1;animation:rise linear infinite;pointer-events:none}
+@keyframes rise{to{transform:translateY(-135vh) rotate(6deg)}}
+#cv{position:fixed;inset:0;z-index:9;pointer-events:none}
+#gate{position:fixed;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;background:var(--bg);transition:opacity .9s,visibility .9s;text-align:center;padding:24px}
+#gate.out{opacity:0;visibility:hidden}
+#gate .n{font-family:Jost,sans-serif;font-weight:200;font-size:min(46vw,260px);line-height:1;color:transparent;-webkit-text-stroke:2px var(--gold);filter:drop-shadow(0 0 24px rgba(220,180,96,.35));animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.04);filter:drop-shadow(0 0 40px rgba(220,180,96,.55))}}
+#gate p{font-style:italic;font-size:30px;color:var(--ink)}
+button,a.b{font-family:Jost,sans-serif;font-weight:400;font-size:17px;letter-spacing:.06em;color:var(--bg);background:linear-gradient(180deg,var(--gold-l),var(--gold) 55%,var(--gold-d));border:0;border-radius:40px;padding:16px 34px;cursor:pointer;text-decoration:none;display:inline-block;text-align:center}
+a.b.o{background:none;color:var(--gold-l);border:1.5px solid var(--gold)}
+button:focus-visible,a.b:focus-visible{outline:3px solid var(--gold-l);outline-offset:3px}
+main{position:relative;z-index:2;max-width:560px;margin:0 auto;padding:64px 28px 90px;text-align:center;opacity:0;transition:opacity 1.2s .5s}
+main.on{opacity:1}
+.big{font-family:Jost,sans-serif;font-weight:200;font-size:min(52vw,230px);line-height:.95;color:transparent;-webkit-text-stroke:2px var(--gold);filter:drop-shadow(0 0 22px rgba(220,180,96,.3))}
+.inv{font-style:italic;font-size:34px;margin-top:20px}
+h1{font-weight:600;font-size:clamp(46px,13vw,68px);line-height:1.02;margin-top:4px;background:linear-gradient(180deg,var(--gold-l),var(--gold) 50%,var(--gold-d));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{font-style:italic;font-size:26px;color:#cdb782;margin-top:14px}
+.cd{display:flex;justify-content:center;gap:10px;margin:44px 0 12px}
+.cd div{flex:1;max-width:112px;border:1.5px solid var(--line);border-radius:18px;padding:16px 4px 12px;background:rgba(220,180,96,.05)}
+.cd b{display:block;font-weight:600;font-size:46px;line-height:1;color:var(--gold-l);font-variant-numeric:tabular-nums}
+.cd span{font-family:Jost,sans-serif;font-weight:300;font-size:14px;color:var(--gold-d)}
+.when{font-family:Jost,sans-serif;font-weight:300;font-size:15px;color:var(--gold-d);margin-bottom:40px}
+.det{border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line);padding:6px 0;margin-bottom:34px}
+.det p{padding:20px 0;font-size:34px;font-weight:600;color:var(--gold-l);line-height:1.1}
+.det p+p{border-top:1.5px solid var(--line)}
+.det small{display:block;font-family:Jost,sans-serif;font-weight:300;font-size:15px;color:var(--gold-d);margin-bottom:8px}
+.plus{font-style:italic;font-size:28px;line-height:1.35;margin-bottom:30px}
+.act{display:flex;flex-direction:column;gap:12px}
+.dl{font-family:Jost,sans-serif;font-weight:300;font-size:15px;color:var(--gold-d);margin:18px 0 46px}
+.end{font-style:italic;font-size:30px;color:var(--gold-d)}
+@media (prefers-reduced-motion:reduce){.bal,.sky i,#gate .n{animation:none}main{transition:none}}
+</style></head><body>
+<div class="sky" id="sky"></div>
+<div id="bals"></div>
+<canvas id="cv"></canvas>
+
+<section id="gate">
+  <div class="n">18</div>
+  <p>Ai primit o invitație</p>
+  <button id="open">Deschide</button>
+</section>
+
+<main id="main">
+  <div class="big">18</div>
+  <p class="inv">Te invit la</p>
+  <h1>Majoratul meu</h1>
+  <p class="tag">Vă aștept cu drag la petrecere!</p>
+
+  <div class="cd" aria-live="off">
+    <div><b id="d">0</b><span>zile</span></div><div><b id="h">0</b><span>ore</span></div><div><b id="m">0</b><span>minute</span></div><div><b id="s">0</b><span>secunde</span></div>
+  </div>
+  <p class="when" id="when">până începe petrecerea</p>
+
+  <div class="det">
+    <p><small>Data</small>Sâmbătă, 23 ianuarie 2027</p>
+    <p><small>Ora</small>18:00</p>
+    <p><small>Locul</small>Hotel Posada</p>
+  </div>
+
+  <p class="plus">Ești binevenit și însoțit –<br>te rog doar să mă anunți când confirmi prezența.</p>
+
+  <div class="act">
+    <a class="b" id="wa" target="_blank" rel="noopener" href="#">Confirm prezența pe WhatsApp</a>
+    <a class="b o" href="tel:+40723164622">Sună la 0723 164 622</a>
+    <a class="b o" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Majorat+Ionut&dates=20270123T180000/20270123T180000&ctz=Europe/Bucharest&location=Hotel+Posada&details=Te+astept+cu+drag+la+petrecere!">Adaugă în calendar</a>
+  </div>
+  <p class="dl">Confirmarea se face până pe 13 ianuarie 2027.</p>
+  <p class="end">Abia aștept să sărbătorim împreună!</p>
+</main>
+
+<script>
+const $=id=>document.getElementById(id),red=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let seed=5;const r=()=>(seed=seed*16807%2147483647)/2147483647;
+// bokeh
+$('sky').innerHTML=Array.from({length:14},()=>{const s=30+r()*80;return `<i style="left:${r()*100}%;top:${r()*100}%;width:${s}px;height:${s}px;background:${r()>.4?'#e2b960':'#6f8fd6'};opacity:${.06+r()*.1};animation-delay:-${r()*10}s"></i>`}).join('');
+// balloons
+const G=['#fbeab0','#b88a30'],N=['#4a6ab0','#0f1f4a'];
+$('bals').innerHTML=Array.from({length:7},(_,i)=>{const c=i%2?G:N,w=46+r()*40,x=i<4?r()*10:88+r()*8,o=.45+r()*.4,id='g'+i;
+ return `<svg class="bal" style="left:${x+(i%3)*3}%;animation-duration:${26+r()*18}s;animation-delay:-${r()*30}s;opacity:${o}" width="${w}" height="${w*2.2}" viewBox="0 0 100 220"><defs><radialGradient id="${id}" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="${c[0]}"/><stop offset=".55" stop-color="${c[1]}"/><stop offset="1" stop-color="#05070f"/></radialGradient></defs><path d="M50 8C95 8 98 78 50 112C2 78 5 8 50 8Z" fill="url(#${id})"/><path d="M45 112l5 9 5-9z" fill="${c[1]}"/><path d="M50 121C56 150 44 175 52 215" stroke="#d9bf7f" stroke-width="1.5" fill="none" opacity=".6"/><ellipse cx="32" cy="38" rx="7" ry="14" fill="#fff" opacity=".35" transform="rotate(25 32 38)"/></svg>`}).join('');
+// confetti
+const cv=$('cv'),cx=cv.getContext('2d');let P=[],run=false;
+function size(){cv.width=innerWidth;cv.height=innerHeight}size();addEventListener('resize',size);
+function burst(){if(red)return;const col=['#f4e3b0','#dcb460','#b99449','#7fa0e8','#ffffff'];
+ for(let i=0;i<190;i++){const a=r()*6.283,v=6+r()*15;P.push({x:cv.width/2,y:cv.height*.45,vx:Math.cos(a)*v,vy:Math.sin(a)*v-7,w:5+r()*8,h:3+r()*5,rot:r()*6,vr:(r()-.5)*.4,c:col[i%5],life:1})}
+ if(!run){run=true;requestAnimationFrame(tick)}}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);P.forEach(p=>{p.vy+=.28;p.vx*=.985;p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;p.life-=.006;cx.save();cx.globalAlpha=Math.max(p.life,0);cx.translate(p.x,p.y);cx.rotate(p.rot);cx.fillStyle=p.c;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore()});
+ P=P.filter(p=>p.life>0&&p.y<cv.height+40);if(P.length)requestAnimationFrame(tick);else{run=false;cx.clearRect(0,0,cv.width,cv.height)}}
+// open
+$('open').onclick=()=>{$('gate').classList.add('out');$('main').classList.add('on');burst();setTimeout(burst,450)};
+// countdown
+const T=new Date(2027,0,23,18,0,0).getTime();
+function upd(){let t=T-Date.now();if(t<=0){['d','h','m','s'].forEach(k=>$(k).textContent='0');$('when').textContent='petrecerea a început!';return}
+ const p=(n)=>String(n).padStart(2,'0');$('d').textContent=Math.floor(t/864e5);$('h').textContent=p(Math.floor(t/36e5)%24);$('m').textContent=p(Math.floor(t/6e4)%60);$('s').textContent=p(Math.floor(t/1e3)%60)}
+upd();setInterval(upd,1000);
+// whatsapp
+$('wa').href='https://wa.me/40723164622?text='+encodeURIComponent('Salut! Confirm prezența la majorat, pe 23 ianuarie. Numele meu: \nVin singur(ă) / însoțit(ă) de: ');
+</script></body></html>
